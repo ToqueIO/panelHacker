@@ -22,11 +22,13 @@ Discord: [https://discord.gg/E2bqCuwwHv]()
    1. I recommend that you place the panelHacker directory in a subdirectory called toqueIO ie: ~/.nuke/toqueIO/panelHacker
    2. Then create an init.py in the toqueIO folder with the following code
     ```python
-   import nuke
-   import os
-   
-   for subDir in os.listdir(toqueIODir := os.path.dirname(__file__)):
-       if os.path.isdir(subDirPath := os.path.join(toqueIODir, subDir)):
+      import nuke
+      import os
+      
+      toqueIODir = os.path.dirname(__file__)
+      for subDir in os.listdir(toqueIODir):
+        subDirPath = os.path.join(toqueIODir, subDir)
+        if os.path.isdir(subDirPath):
            nuke.tprint(f"[ToqueIO] Adding {subDirPath} to plugin path")
            nuke.pluginAddPath(subDirPath)
     ```

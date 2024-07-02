@@ -322,7 +322,8 @@ class ScriptEditor(basePanel.BasePanel):
         selectionEnd = cursor.selectionEnd()
 
         # Get selection split to lines
-        if singleLine := selectionStart == selectionEnd:
+        singleLine = selectionStart == selectionEnd
+        if singleLine:
             selectedText = cursor.block().text()
         else:
             cursor.movePosition(cursor.StartOfLine, cursor.KeepAnchor)
